@@ -1,11 +1,9 @@
 # SoundJS
 
 SoundJS is a library to make working with audio on the web easier. It provides a consistent API for playing audio in
-different browsers, including using a target plugin model to provide an easy way to provide additional audio plugins
-like a Flash fallback (included, but must be used separately from the combined/minified version).
+different browsers, including using a target plugin model to provide an easy way to provide additional audio plugins.
 
 A mechanism has been provided for easily tying in audio preloading to [PreloadJS](http://createjs.com/preloadjs/).
-
 
 ## Example
 
@@ -19,11 +17,13 @@ function handleLoadComplete(event) {
 ```
 
 ## License
+
 Built by gskinner.com, and released for free under the MIT license, which means you can use it for almost any purpose
 (including commercial projects). We appreciate credit where possible, but it is not a requirement.
 
 
 ## Support and Resources
+
 * Find examples and more information at the [SoundJS web site](http://soundjs.com/)
 * Read the [documentation](http://createjs.com/docs/soundjs/)
 * Discuss, share projects, and interact with other users on [reddit](http://www.reddit.com/r/createjs/).
@@ -55,10 +55,6 @@ where the WebAudio plugin is not available.
 ### [CordovaAudioPlugin](http://createjs.com/docs/soundjs/classes/CordovaAudioPlugin.html)
 An additional plugin which will playback audio in a Cordova app and tools that utilize Cordova such as PhoneGap or Ionic.
 You must manually register this plugin. Currently available on github since SoundJS-0.6.1.
-
-### [FlashAudioPlugin](http://createjs.com/Docs/SoundJS/classes/FlashAudioPlugin.html)
-An additional plugin which uses a flash shim (and SWFObject) to playback audio using Flash. You must manually set up and
-register this plugin.
 
 ## [Documentation and examples](http://createjs.com/docs/soundjs/)
 Have a look at the included examples and API documentation for more in-depth information.

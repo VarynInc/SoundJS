@@ -17,6 +17,7 @@ docs/**/
 *[\<\>\:\"\/\\\|\?\*]*
 **/.sass-cache/
 main.css
+main.css.map
 *.codekit
 tests/.grunt
 _SpecRunner.html

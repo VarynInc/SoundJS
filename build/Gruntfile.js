@@ -32,7 +32,6 @@ module.exports = function (grunt) {
 					build: {
 						files: {
 							'output/<%= pkg.name.toLowerCase() %><%= fileVersion %>.min.js': getConfigValue('source'),
-							'output/flashaudioplugin<%= fileVersion %>.min.js': getConfigValue('flashaudioplugin_source'),
 							'output/cordovaaudioplugin<%= fileVersion %>.min.js': getConfigValue('cordovaaudioplugin_source'),
 						}
 					}
@@ -75,9 +74,6 @@ module.exports = function (grunt) {
 							'output/<%= pkg.name.toLowerCase() %><%= fileVersion %>.js': combineSource([
 										{cwd: '', config:'config.json', source:'source'}
 									]),
-							'output/flashaudioplugin<%= fileVersion %>.js': combineSource([
-																	{cwd: '', config:'config.json', source:'flashaudioplugin_source'}
-																]),
 							'output/cordovaaudioplugin<%= fileVersion %>.js': combineSource([
 																	{cwd: '', config:'config.json', source:'cordovaaudioplugin_source'}
 																])
@@ -146,10 +142,6 @@ module.exports = function (grunt) {
 						file: '../src/soundjs/version.js',
 						version: '<%= version %>'
 					},
-					flashaudioplugin: {
-						file: '../src/soundjs/version_flashplugin.js',
-						version: '<%= version %>'
-					},
 					cordovaaudioplugin: {
 						file: '../src/soundjs/version_cordovaplugin.js',
 						version: '<%= version %>'
@@ -160,30 +152,15 @@ module.exports = function (grunt) {
 					sound: {
 						file: '../src/soundjs/version.js'
 					},
-					flashaudioplugin: {
-						file: '../src/soundjs/version_flashplugin.js'
-					},
 					cordovaaudioplugin: {
 						file: '../src/soundjs/version_cordovaplugin.js'
-					}
-				},
-
-				mxmlc: {
-					options: {
-						"rawConfig": '--source-path=../dev'
-					},
-					sound: {
-						files: {
-							'../src/soundjs/flashaudio/FlashAudioPlugin.swf': ['../dev/com/createjs/soundjs/FlashAudioPlugin.as']
-						}
 					}
 				},
 
 				sass: {
 					docs: {
 						options: {
-							style: 'compressed',
-							sourcemap:"none"
+							style: 'compressed'
 						},
 						files: {
 							'createjsTheme/assets/css/main.css': 'createjsTheme/assets/scss/main.scss'
@@ -254,7 +231,7 @@ module.exports = function (grunt) {
 	}
 
 	function getExclusions() {
-		var list = getConfigValue("source").concat(getConfigValue("flashaudioplugin_source")).concat(getConfigValue("cordovaaudioplugin_source"));
+		var list = getConfigValue("source").concat(getConfigValue("cordovaaudioplugin_source"));
 		var files = [];
 		for (var i= 0, l=list.length; i<l; i++) {
 			var name = path.basename(list[i], '.js');
@@ -371,13 +348,4 @@ module.exports = function (grunt) {
 	grunt.registerTask('combine', 'Combine all source into a single, un-minified file.', [
 		"concat"
 	]);
-
-	/**
-	 * Task for building the FlashAudioPlugin
-	 *
-	 */
-	grunt.registerTask('flash', 'Compile the FlashAudioPlugin.', [
-		"mxmlc"
-	]);
-
 };
