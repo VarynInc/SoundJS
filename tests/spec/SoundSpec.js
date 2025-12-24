@@ -59,7 +59,7 @@ describe("SoundJS", function () {
 
 	describe("Capabilities", function () {
 		beforeEach(function () {
-			this.capabilities = this.sound.getCapabilities();
+			this.capabilities = this.sound.capabilities;
 			this.availableCapabilities = ["panning", "volume", "tracks", "mp3", "ogg", "wav", "mpeg", "m4a", "mp4", "aiff", "wma", "mid"];
 		});
 
@@ -77,19 +77,19 @@ describe("SoundJS", function () {
 
 		it("getCapability() should match getCapabilities().", function () {
 			for (var n in this.capabilities) {
-				expect(this.capabilities[n]).toBe(this.sound.getCapability(n));
+				expect(this.capabilities[n]).toBe(this.sound.capabilities[n]);
 			}
 		});
 	});
 
-	it("setMute() should work.", function () {
-		this.sound.setMute(true);
-		expect(this.sound.getMute()).toBe(true);
+	it("muted should work.", function () {
+		this.sound.muted = true;
+		expect(this.sound.muted).toBe(true);
 	});
 
 	it("setVolume() should work.", function () {
-		this.sound.setVolume(.5);
-		expect(this.sound.getVolume()).toBe(.5);
+		this.sound.volume = 0.5;
+		expect(this.sound.volume).toBe(.5);
 	});
 
 	it("initializeDefaultPlugins() should work", function () {
