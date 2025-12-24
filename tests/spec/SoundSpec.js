@@ -12,6 +12,10 @@ describe("SoundJS", function () {
 		this.sound.removeAllEventListeners("fileload");
 	});
 
+	it("isReady() should work", function () {
+		expect(this.sound.isReady()).toBe(true);
+	});
+
 	it("should play mp3s", function (done) {
 		var _this = this;
 		this.sound.registerSound(this.mp3File, "thunder");
@@ -63,7 +67,8 @@ describe("SoundJS", function () {
 			this.availableCapabilities = ["panning", "volume", "tracks", "mp3", "ogg", "wav", "mpeg", "m4a", "mp4", "aiff", "wma", "mid"];
 		});
 
-		it("getCapabilities() should contain the correct properties.", function () {
+		it("capabilities should contain the correct properties.", function () {
+			expect(this.capabilities).toBeInstanceOf(Object);
 			var containsAll = true;
 			var _this = this;
 			this.availableCapabilities.forEach(function (item, index, arr) {
@@ -75,7 +80,8 @@ describe("SoundJS", function () {
 			expect(containsAll).toBe(true);
 		});
 
-		it("getCapability() should match getCapabilities().", function () {
+		it("capabilities[] should match sound.capabilities.", function () {
+			expect(this.capabilities).toBeInstanceOf(Object);
 			for (var n in this.capabilities) {
 				expect(this.capabilities[n]).toBe(this.sound.capabilities[n]);
 			}
@@ -94,10 +100,6 @@ describe("SoundJS", function () {
 
 	it("initializeDefaultPlugins() should work", function () {
 		expect(this.sound.initializeDefaultPlugins()).toBe(true);
-	});
-
-	it("isReady() should work", function () {
-		expect(this.sound.isReady()).toBe(true);
 	});
 
 	it("loadComplete() should be true", function (done) {
