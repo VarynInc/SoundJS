@@ -1015,13 +1015,15 @@ this.createjs = this.createjs || {};
 	 * @since 0.4.0
 	 */
 	s.registerSound = function (src, id, data, basePath, defaultPlayProps) {
-		var loadItem = {src: src, id: id, data:data, defaultPlayProps:defaultPlayProps};
+		var loadItem;
 		if (src instanceof Object && src.src) {
 			basePath = id;
 			loadItem = src;
+		} else {
+			loadItem = {src: src, id: id, data:data, defaultPlayProps:defaultPlayProps};
 		}
 		loadItem = createjs.LoadItem.create(loadItem);
-		loadItem.path = basePath;
+		loadItem.path = basePath || "";
 
 		if (basePath != null && !(loadItem.src instanceof Object)) {loadItem.src = basePath + loadItem.src;}
 
