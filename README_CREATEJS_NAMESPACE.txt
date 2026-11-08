@@ -21,4 +21,4 @@ var createjs = window; // sets window as the createjs namespace (the object the 
 </script>
 <script src="easeljs.js"></script>
 
-This will also make CreateJS libraries compatible with old content that did not use a namespace, such as the output from the Flash Pro Toolkit for CreateJS v1.0.
+This will also make CreateJS libraries compatible with old content that did not use a namespace.
